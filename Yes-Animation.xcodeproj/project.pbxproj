@@ -8,14 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		BCF1082526170ACD00CFB821 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1082426170ACD00CFB821 /* AppDelegate.m */; };
-		BCF1082826170ACD00CFB821 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1082726170ACD00CFB821 /* SceneDelegate.m */; };
-		BCF1082B26170ACD00CFB821 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1082A26170ACD00CFB821 /* ViewController.m */; };
-		BCF1082E26170ACD00CFB821 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF1082C26170ACD00CFB821 /* Main.storyboard */; };
 		BCF1083026170ACE00CFB821 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCF1082F26170ACE00CFB821 /* Assets.xcassets */; };
-		BCF1083326170ACE00CFB821 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF1083126170ACE00CFB821 /* LaunchScreen.storyboard */; };
 		BCF1083626170ACE00CFB821 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1083526170ACE00CFB821 /* main.m */; };
 		BCF1084026170ACE00CFB821 /* Yes_AnimationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1083F26170ACE00CFB821 /* Yes_AnimationTests.m */; };
 		BCF1084B26170ACE00CFB821 /* Yes_AnimationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1084A26170ACE00CFB821 /* Yes_AnimationUITests.m */; };
+		BCF1089326175BE400CFB821 /* YesOCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1089226175BE400CFB821 /* YesOCTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,13 +36,7 @@
 		BCF1082026170ACD00CFB821 /* Yes-Animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yes-Animation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF1082326170ACD00CFB821 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BCF1082426170ACD00CFB821 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BCF1082626170ACD00CFB821 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		BCF1082726170ACD00CFB821 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		BCF1082926170ACD00CFB821 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BCF1082A26170ACD00CFB821 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		BCF1082D26170ACD00CFB821 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCF1082F26170ACE00CFB821 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BCF1083226170ACE00CFB821 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCF1083426170ACE00CFB821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCF1083526170ACE00CFB821 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCF1083B26170ACE00CFB821 /* Yes-AnimationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yes-AnimationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +45,8 @@
 		BCF1084626170ACE00CFB821 /* Yes-AnimationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yes-AnimationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF1084A26170ACE00CFB821 /* Yes_AnimationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Yes_AnimationUITests.m; sourceTree = "<group>"; };
 		BCF1084C26170ACE00CFB821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCF1089126175BE400CFB821 /* YesOCTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YesOCTableViewController.h; sourceTree = "<group>"; };
+		BCF1089226175BE400CFB821 /* YesOCTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YesOCTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,13 +99,9 @@
 			children = (
 				BCF1082326170ACD00CFB821 /* AppDelegate.h */,
 				BCF1082426170ACD00CFB821 /* AppDelegate.m */,
-				BCF1082626170ACD00CFB821 /* SceneDelegate.h */,
-				BCF1082726170ACD00CFB821 /* SceneDelegate.m */,
-				BCF1082926170ACD00CFB821 /* ViewController.h */,
-				BCF1082A26170ACD00CFB821 /* ViewController.m */,
-				BCF1082C26170ACD00CFB821 /* Main.storyboard */,
+				BCF1089126175BE400CFB821 /* YesOCTableViewController.h */,
+				BCF1089226175BE400CFB821 /* YesOCTableViewController.m */,
 				BCF1082F26170ACE00CFB821 /* Assets.xcassets */,
-				BCF1083126170ACE00CFB821 /* LaunchScreen.storyboard */,
 				BCF1083426170ACE00CFB821 /* Info.plist */,
 				BCF1083526170ACE00CFB821 /* main.m */,
 			);
@@ -239,9 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF1083326170ACE00CFB821 /* LaunchScreen.storyboard in Resources */,
 				BCF1083026170ACE00CFB821 /* Assets.xcassets in Resources */,
-				BCF1082E26170ACD00CFB821 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,10 +253,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCF1082B26170ACD00CFB821 /* ViewController.m in Sources */,
 				BCF1082526170ACD00CFB821 /* AppDelegate.m in Sources */,
 				BCF1083626170ACE00CFB821 /* main.m in Sources */,
-				BCF1082826170ACD00CFB821 /* SceneDelegate.m in Sources */,
+				BCF1089326175BE400CFB821 /* YesOCTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,25 +289,6 @@
 			targetProxy = BCF1084726170ACE00CFB821 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		BCF1082C26170ACD00CFB821 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCF1082D26170ACD00CFB821 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BCF1083126170ACE00CFB821 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCF1083226170ACE00CFB821 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BCF1084D26170ACE00CFB821 /* Debug */ = {

@@ -6,17 +6,31 @@
 //
 
 #import "YesOCTableViewController.h"
+#import "Animations/LoginViewController.h"
 
 @interface YesOCTableViewController ()
+@property (nonatomic, strong) NSArray *componentList;
 
 @end
 
 @implementation YesOCTableViewController
 
+- (instancetype) init{
+    self = [super initWithStyle:UITableViewStylePlain];
+    if(!self) return nil;
+    [self setTitle:@"All Demos"];
+    
+    _componentList = @[
+        [LoginViewController class],
+    ];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"YesOCCellReuseIdentifier"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -28,23 +42,27 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return 0;
+    return [_componentList count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YesOCCellReuseIdentifier" forIndexPath:indexPath];
     
-    // Configure the cell...
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [_componentList objectAtIndex:indexPath.row]]];
     
     return cell;
 }
-*/
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIViewController *viewController = [[[_componentList objectAtIndex:indexPath.row] alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.

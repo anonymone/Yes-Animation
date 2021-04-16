@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C3F05DFAAD18FC0FAFC87B8 /* libPods-Yes-Animation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A955B065718E48CDA47964B7 /* libPods-Yes-Animation.a */; };
 		BCF1082526170ACD00CFB821 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1082426170ACD00CFB821 /* AppDelegate.m */; };
 		BCF1083026170ACE00CFB821 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCF1082F26170ACE00CFB821 /* Assets.xcassets */; };
 		BCF1083626170ACE00CFB821 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1083526170ACE00CFB821 /* main.m */; };
 		BCF1084026170ACE00CFB821 /* Yes_AnimationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1083F26170ACE00CFB821 /* Yes_AnimationTests.m */; };
 		BCF1084B26170ACE00CFB821 /* Yes_AnimationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1084A26170ACE00CFB821 /* Yes_AnimationUITests.m */; };
 		BCF1089326175BE400CFB821 /* YesOCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF1089226175BE400CFB821 /* YesOCTableViewController.m */; };
+		BCF108A6261762CA00CFB821 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF108A5261762CA00CFB821 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4843673F5601F7417879CC58 /* Pods-Yes-Animation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-Animation.debug.xcconfig"; path = "Target Support Files/Pods-Yes-Animation/Pods-Yes-Animation.debug.xcconfig"; sourceTree = "<group>"; };
+		86E30D92FA86C4DE1885AE11 /* Pods-Yes-Animation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yes-Animation.release.xcconfig"; path = "Target Support Files/Pods-Yes-Animation/Pods-Yes-Animation.release.xcconfig"; sourceTree = "<group>"; };
+		A955B065718E48CDA47964B7 /* libPods-Yes-Animation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Yes-Animation.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF1082026170ACD00CFB821 /* Yes-Animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yes-Animation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF1082326170ACD00CFB821 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BCF1082426170ACD00CFB821 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -47,6 +52,8 @@
 		BCF1084C26170ACE00CFB821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCF1089126175BE400CFB821 /* YesOCTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YesOCTableViewController.h; sourceTree = "<group>"; };
 		BCF1089226175BE400CFB821 /* YesOCTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YesOCTableViewController.m; sourceTree = "<group>"; };
+		BCF108A4261762CA00CFB821 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		BCF108A5261762CA00CFB821 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C3F05DFAAD18FC0FAFC87B8 /* libPods-Yes-Animation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +82,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B51077C5838D8DCB2235BA6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4843673F5601F7417879CC58 /* Pods-Yes-Animation.debug.xcconfig */,
+				86E30D92FA86C4DE1885AE11 /* Pods-Yes-Animation.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B216B59C9497F11F0E2419A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A955B065718E48CDA47964B7 /* libPods-Yes-Animation.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BCF1081726170ACD00CFB821 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +107,8 @@
 				BCF1083E26170ACE00CFB821 /* Yes-AnimationTests */,
 				BCF1084926170ACE00CFB821 /* Yes-AnimationUITests */,
 				BCF1082126170ACD00CFB821 /* Products */,
+				8B51077C5838D8DCB2235BA6 /* Pods */,
+				B216B59C9497F11F0E2419A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +125,7 @@
 		BCF1082226170ACD00CFB821 /* Yes-Animation */ = {
 			isa = PBXGroup;
 			children = (
+				BCF108A32617611600CFB821 /* Animations */,
 				BCF1082326170ACD00CFB821 /* AppDelegate.h */,
 				BCF1082426170ACD00CFB821 /* AppDelegate.m */,
 				BCF1089126175BE400CFB821 /* YesOCTableViewController.h */,
@@ -126,6 +155,15 @@
 			path = "Yes-AnimationUITests";
 			sourceTree = "<group>";
 		};
+		BCF108A32617611600CFB821 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				BCF108A4261762CA00CFB821 /* LoginViewController.h */,
+				BCF108A5261762CA00CFB821 /* LoginViewController.m */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,6 +171,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCF1084F26170ACE00CFB821 /* Build configuration list for PBXNativeTarget "Yes-Animation" */;
 			buildPhases = (
+				F01F5E20E7D621436DB7F6D6 /* [CP] Check Pods Manifest.lock */,
 				BCF1081C26170ACD00CFB821 /* Sources */,
 				BCF1081D26170ACD00CFB821 /* Frameworks */,
 				BCF1081E26170ACD00CFB821 /* Resources */,
@@ -248,11 +287,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F01F5E20E7D621436DB7F6D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Yes-Animation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BCF1081C26170ACD00CFB821 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCF108A6261762CA00CFB821 /* LoginViewController.m in Sources */,
 				BCF1082526170ACD00CFB821 /* AppDelegate.m in Sources */,
 				BCF1083626170ACE00CFB821 /* main.m in Sources */,
 				BCF1089326175BE400CFB821 /* YesOCTableViewController.m in Sources */,
@@ -405,6 +470,7 @@
 		};
 		BCF1085026170ACE00CFB821 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4843673F5601F7417879CC58 /* Pods-Yes-Animation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -423,6 +489,7 @@
 		};
 		BCF1085126170ACE00CFB821 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86E30D92FA86C4DE1885AE11 /* Pods-Yes-Animation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

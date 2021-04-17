@@ -175,6 +175,7 @@
 				BCF1081C26170ACD00CFB821 /* Sources */,
 				BCF1081D26170ACD00CFB821 /* Frameworks */,
 				BCF1081E26170ACD00CFB821 /* Resources */,
+				83C25AE35496090C5316D4CE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -288,6 +289,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		83C25AE35496090C5316D4CE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yes-Animation/Pods-Yes-Animation-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yes-Animation/Pods-Yes-Animation-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yes-Animation/Pods-Yes-Animation-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F01F5E20E7D621436DB7F6D6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

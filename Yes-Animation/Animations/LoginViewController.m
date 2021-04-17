@@ -99,6 +99,8 @@ CGFloat margin = 20;
     [_loginBtn addTarget:self action:@selector(btnClickUp) forControlEvents:UIControlEventTouchUpInside];
 }
 
+#pragma mark Animation
+
 - (void) UIConstraintOut {
     CGFloat bias = 2*self.view.bounds.size.width;
     
@@ -192,13 +194,28 @@ CGFloat margin = 20;
     }];
 }
 
+- (void) UIshake :(UIView *) view shakeRate: (CGFloat) value duration: (CGFloat) time {
+    CALayer *viewLayer = view.layer;
+    CGPoint position = viewLayer.position;
+    CGPoint x = CGPointMake(position.x + value, position.y);
+    CGPoint y = CGPointMake(position.x - value, position.y);
+    
+    CABasicAnimation *shakeAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    [shakeAnimation setFromValue:[NSValue valueWithCGPoint:x]];
+    [shakeAnimation setToValue:[NSValue valueWithCGPoint:y]];
+    [shakeAnimation setAutoreverses:YES];
+    [shakeAnimation setDuration:time];
+    [shakeAnimation setRepeatCount:3];
+    
+    [viewLayer addAnimation:shakeAnimation forKey:nil];
+}
+
 #pragma mark UI Action
 
 - (void) btnClickInside {
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:2.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^(void){
         [self->_loginBtn setTransform:CGAffineTransformMakeScale(0.9,0.9)];
     } completion:^(BOOL finished){
-        
     }];
 }
 
@@ -206,6 +223,7 @@ CGFloat margin = 20;
     dispatch_queue_t queen = dispatch_get_main_queue();
     
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:2.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^(void){
+        [self->_loginBtn setBackgroundColor:[UIColor colorWithRed:153/250.0 green:204/250.0 blue:153/250.0 alpha:1.0]];
         [self->_loginBtn setTransform:CGAffineTransformMakeScale(1.0,1.0)];
     } completion:^(BOOL finished){
         [self->_loginBtn.titleLabel setAlpha:0.0];
@@ -213,6 +231,8 @@ CGFloat margin = 20;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), queen, ^{
             [self->_loginWait stopAnimating];
+            [self->_loginBtn setBackgroundColor:[UIColor redColor]];
+            [self UIshake:self->_loginBtn shakeRate:20 duration:.06];
             [self->_loginBtn.titleLabel setAlpha:1.0];
         });
     }];

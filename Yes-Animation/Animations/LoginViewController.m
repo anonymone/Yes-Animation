@@ -141,14 +141,14 @@ CGFloat margin = 20;
 }
 
 - (void) UIConstraintIn {
-    [_loginHead mas_remakeConstraints:^(MASConstraintMaker *make){
+    [_loginHead mas_updateConstraints:^(MASConstraintMaker *make){
         make.leading.equalTo(self.view).offset(margin);
         make.trailing.equalTo(self.view).offset(-margin);
         make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(10*margin);
         make.height.equalTo(self.view.mas_height).multipliedBy(0.1);
     }];
     
-    [_userName mas_remakeConstraints:^(MASConstraintMaker *make){
+    [_userName mas_updateConstraints:^(MASConstraintMaker *make){
         make.leading.equalTo(self.view).offset(margin);
         make.trailing.equalTo(self.view).offset(-margin);
         make.top.equalTo(_loginHead.mas_bottom).offset(margin);
@@ -163,7 +163,7 @@ CGFloat margin = 20;
     
     }];
     
-    [_passWord mas_remakeConstraints:^(MASConstraintMaker *make){
+    [_passWord mas_updateConstraints:^(MASConstraintMaker *make){
         make.leading.equalTo(self.view).offset(margin);
         make.trailing.equalTo(self.view).offset(-margin);
         make.top.equalTo(_userName.mas_bottom).offset(margin);
@@ -177,7 +177,7 @@ CGFloat margin = 20;
     
     }];
     
-    [_loginBtn mas_remakeConstraints:^(MASConstraintMaker *make){
+    [_loginBtn mas_updateConstraints:^(MASConstraintMaker *make){
         make.height.equalTo(_userName.mas_height);
         make.width.equalTo(_userName.mas_width).multipliedBy(0.4);
         make.top.equalTo(_passWord.mas_bottom).offset(margin);

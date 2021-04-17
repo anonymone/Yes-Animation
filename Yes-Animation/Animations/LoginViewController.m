@@ -8,6 +8,8 @@
 #import "LoginViewController.h"
 #import <Masonry.h>
 
+CGFloat margin = 20;
+
 @interface LoginViewController ()
 @property (nonatomic, strong) UITextField *userName;
 @property (nonatomic, strong) UITextField *passWord;
@@ -29,56 +31,15 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    CGFloat bias = 2*self.view.bounds.size.width;
-    
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
-        [self->_userName setCenter:CGPointMake(self->_userName.center.x+bias, self->_userName.center.y)];
-        [self->_loginHead setAlpha:1.0];
-    }
-    completion:^(BOOL finish){
-    }];
-    
-    [UIView animateWithDuration:0.5 delay:0.1 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
-        [self->_passWord setCenter:CGPointMake(self->_passWord.center.x+bias, self->_passWord.center.y)];
-    }
-    completion:^(BOOL finish){
-        
-    }];
-    
-    [UIView animateWithDuration:0.5 delay:0.2 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
-        [self->_loginBtn setCenter:CGPointMake(self->_loginBtn.center.x+bias, self->_loginBtn.center.y)];
-    }
-    completion:^(BOOL finish){
-        
-    }];
+    [self UIConstraintIn];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
-    CGFloat bias = 2*self.view.bounds.size.width;
     
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
-        [self->_userName setCenter:CGPointMake(self->_userName.center.x-bias, self->_userName.center.y)];
-    }
-    completion:^(BOOL finish){
-       
-    }];
-    
-    [UIView animateWithDuration:0.5 delay:0.1 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
-        [self->_passWord setCenter:CGPointMake(self->_passWord.center.x-bias, self->_passWord.center.y)];
-    }
-    completion:^(BOOL finish){
-        
-    }];
-    
-    [UIView animateWithDuration:0.5 delay:0.2 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
-        [self->_loginBtn setCenter:CGPointMake(self->_loginBtn.center.x-bias, self->_loginBtn.center.y)];
-    }
-    completion:^(BOOL finish){
-        
-    }];
 }
 
 #pragma mark UI Config
@@ -121,57 +82,114 @@
     _loginHead = [[UILabel alloc] init];
     _loginWait = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
     
-    [self setUIStyle];
-    [self UIActionConfig];
-    
     [self.view addSubview:_userName];
     [self.view addSubview:_passWord];
     [self.view addSubview:_loginBtn];
     [self.view addSubview:_loginHead];
     [_loginBtn addSubview:_loginWait];
     
-    CGFloat margin = 20;
+    [self setUIStyle];
+    [self UIActionConfig];
+    
+    [self UIConstraintOut];
+}
+
+- (void) UIActionConfig {
+    [_loginBtn addTarget:self action:@selector(btnClickInside) forControlEvents:UIControlEventTouchDown];
+    [_loginBtn addTarget:self action:@selector(btnClickUp) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) UIConstraintOut {
     CGFloat bias = 2*self.view.bounds.size.width;
     
-    [_loginHead mas_makeConstraints:^(MASConstraintMaker *make){
+    [_loginHead mas_remakeConstraints:^(MASConstraintMaker *make){
         make.leading.equalTo(self.view).offset(margin);
         make.trailing.equalTo(self.view).offset(-margin);
         make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(10*margin);
         make.height.equalTo(self.view.mas_height).multipliedBy(0.1);
     }];
     
-    [_userName mas_makeConstraints:^(MASConstraintMaker *make){
+    [_userName mas_remakeConstraints:^(MASConstraintMaker *make){
         make.leading.equalTo(self.view).offset(margin-bias);
         make.trailing.equalTo(self.view).offset(-margin-bias);
         make.top.equalTo(_loginHead.mas_bottom).offset(margin);
         make.height.equalTo(_loginHead.mas_height).multipliedBy(0.5);
     }];
     
-    [_passWord mas_makeConstraints:^(MASConstraintMaker *make){
+    [_passWord mas_remakeConstraints:^(MASConstraintMaker *make){
         make.leading.equalTo(self.view).offset(margin-bias);
         make.trailing.equalTo(self.view).offset(-margin-bias);
         make.top.equalTo(_userName.mas_bottom).offset(margin);
         make.height.equalTo(_userName.mas_height);
     }];
     
-    [_loginBtn mas_makeConstraints:^(MASConstraintMaker *make){
+    [_loginBtn mas_remakeConstraints:^(MASConstraintMaker *make){
         make.height.equalTo(_userName.mas_height);
         make.width.equalTo(_userName.mas_width).multipliedBy(0.4);
         make.top.equalTo(_passWord.mas_bottom).offset(margin);
         make.centerX.equalTo(_passWord.mas_centerX);
     }];
     
-    [_loginWait mas_makeConstraints:^(MASConstraintMaker *make){
+    [_loginWait mas_remakeConstraints:^(MASConstraintMaker *make){
         make.height.equalTo(_loginBtn.mas_height);
         make.width.equalTo(_loginBtn.mas_height);
         make.centerX.equalTo(_loginBtn.mas_centerX);
         make.centerY.equalTo(_loginBtn.mas_centerY);
     }];
+    
+    [self.view layoutIfNeeded];
 }
 
-- (void) UIActionConfig {
-    [_loginBtn addTarget:self action:@selector(btnClickInside) forControlEvents:UIControlEventTouchDown];
-    [_loginBtn addTarget:self action:@selector(btnClickUp) forControlEvents:UIControlEventTouchUpInside];
+- (void) UIConstraintIn {
+    [_loginHead mas_remakeConstraints:^(MASConstraintMaker *make){
+        make.leading.equalTo(self.view).offset(margin);
+        make.trailing.equalTo(self.view).offset(-margin);
+        make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(10*margin);
+        make.height.equalTo(self.view.mas_height).multipliedBy(0.1);
+    }];
+    
+    [_userName mas_remakeConstraints:^(MASConstraintMaker *make){
+        make.leading.equalTo(self.view).offset(margin);
+        make.trailing.equalTo(self.view).offset(-margin);
+        make.top.equalTo(_loginHead.mas_bottom).offset(margin);
+        make.height.equalTo(_loginHead.mas_height).multipliedBy(0.5);
+    }];
+    
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
+        [self.view layoutIfNeeded];
+        [self->_loginHead setAlpha:1.0];
+    }
+    completion:^(BOOL finish){
+    
+    }];
+    
+    [_passWord mas_remakeConstraints:^(MASConstraintMaker *make){
+        make.leading.equalTo(self.view).offset(margin);
+        make.trailing.equalTo(self.view).offset(-margin);
+        make.top.equalTo(_userName.mas_bottom).offset(margin);
+        make.height.equalTo(_userName.mas_height);
+    }];
+    
+    [UIView animateWithDuration:0.5 delay:0.1 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
+        [self.view layoutIfNeeded];
+    }
+    completion:^(BOOL finish){
+    
+    }];
+    
+    [_loginBtn mas_remakeConstraints:^(MASConstraintMaker *make){
+        make.height.equalTo(_userName.mas_height);
+        make.width.equalTo(_userName.mas_width).multipliedBy(0.4);
+        make.top.equalTo(_passWord.mas_bottom).offset(margin);
+        make.centerX.equalTo(_passWord.mas_centerX);
+    }];
+    
+    [UIView animateWithDuration:0.5 delay:0.2 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
+        [self.view layoutIfNeeded];
+    }
+    completion:^(BOOL finish){
+    
+    }];
 }
 
 #pragma mark UI Action

@@ -10,7 +10,7 @@
 
 CGFloat margin = 20;
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *userName;
 @property (nonatomic, strong) UITextField *passWord;
 @property (nonatomic, strong) UILabel *loginHead;
@@ -55,17 +55,25 @@ CGFloat margin = 20;
     [_loginHead setTextAlignment:NSTextAlignmentCenter];
     [_loginHead setFont:titleFont];
     [_loginHead setTextColor:titleColor];
-    [_loginHead setAlpha:0.0];
+    [_loginHead setHidden:TRUE];
     
-    [_userName setText:@"User Name"];
+    [_userName setPlaceholder:@"User Name"];
     [_userName setTextAlignment:NSTextAlignmentCenter];
     [_userName setFont:contentFont];
     [_userName setTextColor:contentColor];
+    [_userName setBorderStyle:UITextBorderStyleRoundedRect];
+    [_userName setBackgroundColor:[UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.0]];
+    [_userName setKeyboardType:UIKeyboardTypeEmailAddress];
     
-    [_passWord setText:@"Password"];
+    [_passWord setPlaceholder:@"Password"];
     [_passWord setTextAlignment:NSTextAlignmentCenter];
     [_passWord setFont:contentFont];
     [_passWord setTextColor:contentColor];
+    [_passWord setClearsOnBeginEditing:YES];
+    [_passWord setBorderStyle:UITextBorderStyleRoundedRect];
+    [_passWord setBackgroundColor:[UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.0]];
+    [_passWord setKeyboardType:UIKeyboardTypeAlphabet];
+    [_passWord setSecureTextEntry:YES];
     
     [_loginBtn setTitle:@"Login" forState:UIControlStateNormal];
     [_loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -81,6 +89,9 @@ CGFloat margin = 20;
     _loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     _loginHead = [[UILabel alloc] init];
     _loginWait = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
+    
+    _userName.delegate = self;
+    _passWord.delegate = self;
     
     [self.view addSubview:_userName];
     [self.view addSubview:_passWord];
@@ -99,7 +110,31 @@ CGFloat margin = 20;
     [_loginBtn addTarget:self action:@selector(btnClickUp) forControlEvents:UIControlEventTouchUpInside];
 }
 
+#pragma mark Delegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    
+    if([textField isEqual:_passWord]) {
+        [self btnClickUp];
+    }
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [_userName resignFirstResponder];
+    [_passWord resignFirstResponder];
+}
+
 #pragma mark Animation
+
+- (void) startAnimationEffect: (UIView *) view {
+    [UIView transitionWithView:view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromBottom animations:^(void){
+        [view setHidden:FALSE];
+    } completion:^(BOOL finish){
+        
+    }];
+}
 
 - (void) UIConstraintOut {
     CGFloat bias = 2*self.view.bounds.size.width;
@@ -157,9 +192,10 @@ CGFloat margin = 20;
         make.height.equalTo(_loginHead.mas_height).multipliedBy(0.5);
     }];
     
+    [self startAnimationEffect:_loginHead];
+    
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(void){
         [self.view layoutIfNeeded];
-        [self->_loginHead setAlpha:1.0];
     }
     completion:^(BOOL finish){
     

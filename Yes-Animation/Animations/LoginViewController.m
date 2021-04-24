@@ -57,7 +57,7 @@ CGFloat margin = 20;
     [_loginHead setTextColor:titleColor];
     [_loginHead setHidden:TRUE];
     
-    [_userName setPlaceholder:@"User Name"];
+    [_userName setPlaceholder:@"UserName@anonymone.cc"];
     [_userName setTextAlignment:NSTextAlignmentCenter];
     [_userName setFont:contentFont];
     [_userName setTextColor:contentColor];
@@ -233,9 +233,25 @@ CGFloat margin = 20;
 - (void) UIshake :(UIView *) view shakeRate: (CGFloat) value duration: (CGFloat) time {
     CALayer *viewLayer = view.layer;
     CGPoint position = viewLayer.position;
-    CGPoint x = CGPointMake(position.x + value, position.y);
+    CGPoint x = CGPointMake(position.x, position.y);
     CGPoint y = CGPointMake(position.x - value, position.y);
     
+    // Spring Animation
+    CASpringAnimation *shakeAnimationWithSpring = [CASpringAnimation animationWithKeyPath:@"position"];
+    [shakeAnimationWithSpring setFromValue:[NSValue valueWithCGPoint:x]];
+    [shakeAnimationWithSpring setToValue:[NSValue valueWithCGPoint:y]];
+    [shakeAnimationWithSpring setDamping:7.5];
+    [shakeAnimationWithSpring setMass:2.0];
+    [shakeAnimationWithSpring setDuration:shakeAnimationWithSpring.settlingDuration];
+    
+    // Rotation
+    CAKeyframeAnimation *shakeAnimationWithRotation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    [shakeAnimationWithRotation setDuration:time];
+    [shakeAnimationWithRotation setRepeatCount:3];
+    [shakeAnimationWithRotation setValues:@[@0.0, @(-3.14159/16.0), @0.0, @(3.14159/16.0)]];
+    [shakeAnimationWithRotation setKeyTimes:@[@0.0, @0.25, @0.5, @0.75, @1.0]];
+    
+    // Shake with left and right
     CABasicAnimation *shakeAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
     [shakeAnimation setFromValue:[NSValue valueWithCGPoint:x]];
     [shakeAnimation setToValue:[NSValue valueWithCGPoint:y]];
@@ -243,7 +259,7 @@ CGFloat margin = 20;
     [shakeAnimation setDuration:time];
     [shakeAnimation setRepeatCount:3];
     
-    [viewLayer addAnimation:shakeAnimation forKey:nil];
+    [viewLayer addAnimation:shakeAnimationWithRotation forKey:nil];
 }
 
 #pragma mark UI Action
@@ -268,7 +284,7 @@ CGFloat margin = 20;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), queen, ^{
             [self->_loginWait stopAnimating];
             [self->_loginBtn setBackgroundColor:[UIColor redColor]];
-            [self UIshake:self->_loginBtn shakeRate:20 duration:.06];
+            [self UIshake:self->_loginBtn shakeRate:20 duration:.1];
             [self->_loginBtn.titleLabel setAlpha:1.0];
         });
     }];

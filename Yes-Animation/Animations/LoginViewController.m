@@ -120,8 +120,17 @@ CGFloat margin = 20;
     return YES;
 }
 
+- (BOOL) textFieldShouldBeginEditing:(UITextField *)textField {
+    [textField setBackgroundColor:[UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.0]];
+    return YES;
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    [self resignKeyboard];
+}
+
+- (void) resignKeyboard {
     [_userName resignFirstResponder];
     [_passWord resignFirstResponder];
 }
@@ -230,6 +239,19 @@ CGFloat margin = 20;
     }];
 }
 
+- (void) animationUpAndDown: (UIView *) view jumpRate: (CGFloat) value{
+    CALayer *viewlayer = view.layer;
+    CGPoint position = viewlayer.position;
+    
+    CASpringAnimation *jump = [CASpringAnimation animationWithKeyPath:@"position"];
+    [jump setDamping:2.0];
+    [jump setFromValue:[NSValue valueWithCGPoint:CGPointMake(position.x, position.y-value)]];
+    [jump setToValue:[NSValue valueWithCGPoint:CGPointMake(position.x, position.y)]];
+    [jump setDuration:jump.settlingDuration];
+    
+    [viewlayer addAnimation:jump forKey:nil];
+}
+
 - (void) UIshake :(UIView *) view shakeRate: (CGFloat) value duration: (CGFloat) time {
     CALayer *viewLayer = view.layer;
     CGPoint position = viewLayer.position;
@@ -265,6 +287,7 @@ CGFloat margin = 20;
 #pragma mark UI Action
 
 - (void) btnClickInside {
+    [self resignKeyboard];
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:2.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveLinear animations:^(void){
         [self->_loginBtn setTransform:CGAffineTransformMakeScale(0.9,0.9)];
     } completion:^(BOOL finished){
@@ -283,6 +306,10 @@ CGFloat margin = 20;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), queen, ^{
             [self->_loginWait stopAnimating];
+            
+            [self animationUpAndDown:self->_passWord jumpRate:10.0];
+            [self->_passWord setBackgroundColor:[UIColor redColor]];
+            
             [self->_loginBtn setBackgroundColor:[UIColor redColor]];
             [self UIshake:self->_loginBtn shakeRate:20 duration:.1];
             [self->_loginBtn.titleLabel setAlpha:1.0];

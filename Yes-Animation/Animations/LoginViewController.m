@@ -252,6 +252,23 @@ CGFloat margin = 20;
     [viewlayer addAnimation:jump forKey:nil];
 }
 
+- (void) animationLeftAndRight: (UIView *) view shakeRate: (CGFloat) value{
+    CALayer *viewlayer = view.layer;
+    CGPoint position = viewlayer.position;
+    
+    CASpringAnimation *shake = [CASpringAnimation animationWithKeyPath:@"position"];
+    [shake setInitialVelocity:300.0];
+    [shake setStiffness:2000.0];
+    [shake setDamping:10.0];
+    [shake setMass:1.0];
+    
+    [shake setFromValue:[NSValue valueWithCGPoint:CGPointMake(position.x-value, position.y)]];
+    [shake setToValue:[NSValue valueWithCGPoint:CGPointMake(position.x, position.y)]];
+    [shake setDuration:shake.settlingDuration];
+    
+    [viewlayer addAnimation:shake forKey:nil];
+}
+
 - (void) UIshake :(UIView *) view shakeRate: (CGFloat) value duration: (CGFloat) time {
     CALayer *viewLayer = view.layer;
     CGPoint position = viewLayer.position;
@@ -307,7 +324,7 @@ CGFloat margin = 20;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), queen, ^{
             [self->_loginWait stopAnimating];
             
-            [self animationUpAndDown:self->_passWord jumpRate:10.0];
+            [self animationLeftAndRight:self->_passWord shakeRate:10.0];
             [self->_passWord setBackgroundColor:[UIColor redColor]];
             
             [self->_loginBtn setBackgroundColor:[UIColor redColor]];
